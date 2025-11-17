@@ -25,10 +25,7 @@ function App(props: AppProps) {
 
     async function loadVersion() {
       try {
-        const baseUrl =
-          Platform.OS === 'android'
-            ? 'http://10.0.2.2:3000'
-            : 'http://localhost:3000';
+        const baseUrl = 'http://192.168.10.212:3000';
 
         const res = await fetch(
           `${baseUrl}/bundle/latest?platform=${Platform.OS}`,
