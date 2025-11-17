@@ -1,7 +1,7 @@
 import path from "node:path";
 import fs from "node:fs";
 import { gzipSync } from "node:zlib";
-import { supabase } from "../../db/supabaseClient";
+import { supabase } from "./supabaseClient";
 
 const STORAGE_BUCKET = "bundles";
 

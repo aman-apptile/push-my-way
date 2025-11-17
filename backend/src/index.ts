@@ -1,6 +1,6 @@
 import { Hono } from "hono";
 import type { Context } from "hono";
-import { supabase } from "../../db/supabaseClient";
+import { supabase } from "./supabaseClient";
 import { queueBundleBuild } from "./utils";
 
 const app = new Hono();
