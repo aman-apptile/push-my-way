@@ -3,6 +3,7 @@
   "scripts": {
     "dev": "dotenv -e ../.env -- bun run --hot src/index.ts",
     "build": "bun build src/index.ts --outdir dist --target node",
+    "vercel-build": "echo 'Skipping build - using Vercel Functions'",
     "start": "dotenv -e ../.env -- bun run dist/index.js"
   },
   "dependencies": {

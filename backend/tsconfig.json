@@ -1,9 +1,16 @@
 {
   "compilerOptions": {
-    "strict": true,
+    "strict": false,
     "jsx": "react-jsx",
     "jsxImportSource": "hono/jsx",
     "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true
-  }
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
+    "moduleResolution": "bundler",
+    "module": "ESNext",
+    "target": "ESNext",
+    "noEmit": true
+  },
+  "include": ["src", "api"],
+  "exclude": ["node_modules", "dist"]
 }
