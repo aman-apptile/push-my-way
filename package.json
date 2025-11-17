@@ -2,13 +2,13 @@
   "name": "codepush-my-way",
   "private": true,
   "scripts": {
-    "dev:backend": "cd push-my-way-backend && dotenv -e ../.env -- bun run dev",
-    "build:backend": "cd push-my-way-backend && bun run build",
-    "start:backend": "cd push-my-way-backend && dotenv -e ../.env -- bun run start",
-    "dev:mobile": "cd PushMyWay && bun run start",
-    "android": "cd PushMyWay && bun run android",
-    "ios": "cd PushMyWay && bun run ios",
-    "db:migrate": "cd push-my-way-db && dotenv -e ../.env -- bun run migrate"
+    "dev:backend": "cd backend && dotenv -e ../.env -- bun run dev",
+    "build:backend": "cd backend && bun run build",
+    "start:backend": "cd backend && dotenv -e ../.env -- bun run start",
+    "dev:mobile": "cd app && bun run start",
+    "android": "cd app && bun run android",
+    "ios": "cd app && bun run ios",
+    "db:migrate": "cd db && dotenv -e ../.env -- bun run migrate"
   },
   "devDependencies": {
     "@types/bun": "latest"
