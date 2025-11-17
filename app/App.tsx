@@ -1,4 +1,4 @@
-import React from 'react';
+import { useEffect, useState } from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import {
   Platform,
@@ -16,16 +16,16 @@ export type AppProps = {
 function App(props: AppProps) {
   const isDarkMode = useColorScheme() === 'dark';
 
-  const [version, setVersion] = React.useState<number | null>(
+  const [version, setVersion] = useState<number | null>(
     props.bundleVersion ?? null,
   );
 
-  React.useEffect(() => {
+  useEffect(() => {
     let cancelled = false;
 
     async function loadVersion() {
       try {
-        const baseUrl = 'http://192.168.10.212:3000';
+        const baseUrl = 'https://1d7b9c736279.ngrok-free.app';
 
         const res = await fetch(
           `${baseUrl}/bundle/latest?platform=${Platform.OS}`,

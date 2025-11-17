@@ -1,6 +1,7 @@
 package com.pushmyway
 
 import android.app.Application
+import android.util.Log
 import com.facebook.react.PackageList
 import com.facebook.react.ReactApplication
 import com.facebook.react.ReactHost
@@ -11,6 +12,8 @@ class MainApplication : Application(), ReactApplication {
 
   override val reactHost: ReactHost by lazy {
     val bundlePath = CodePushPrefs.getBundlePath(this)
+
+    Log.d("CodePush", "Loading bundle from path: $bundlePath")
 
     getDefaultReactHost(
       context = applicationContext,
