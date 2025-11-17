@@ -6,8 +6,7 @@ import { supabase } from "../../db/supabaseClient";
 const STORAGE_BUCKET = "bundles";
 
 export async function queueBundleBuild(platform: string): Promise<void> {
-  const backendRoot = __dirname;
-  const rnProjectRoot = path.resolve(backendRoot, "../PushMyWay");
+  const rnProjectRoot = path.resolve(__dirname, "../../app");
   const buildOutputDir = path.resolve(rnProjectRoot, "codepush");
 
   fs.mkdirSync(buildOutputDir, { recursive: true });
@@ -34,8 +33,7 @@ export async function queueBundleBuild(platform: string): Promise<void> {
 
   const proc = Bun.spawn({
     cmd: [
-      "npx",
-      "react-native",
+      "./node_modules/.bin/react-native",
       "bundle",
       "--platform",
       platform,
