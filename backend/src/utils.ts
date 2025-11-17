@@ -7,7 +7,7 @@ const STORAGE_BUCKET = "bundles";
 
 export async function queueBundleBuild(platform: string): Promise<void> {
   const rnProjectRoot = path.resolve(__dirname, "../../app");
-  const buildOutputDir = path.resolve(rnProjectRoot, "codepush");
+  const buildOutputDir = path.resolve(rnProjectRoot, "temp");
 
   fs.mkdirSync(buildOutputDir, { recursive: true });
 
@@ -105,6 +105,14 @@ export async function queueBundleBuild(platform: string): Promise<void> {
   console.log(
     `Bundle v${nextVersion} for platform=${platform} built and published at ${publicUrl}`
   );
+
+  // Clean up temporary build directory contents after successful upload
+  try {
+    fs.rmSync(buildOutputDir, { recursive: true, force: true });
+    fs.mkdirSync(buildOutputDir, { recursive: true });
+  } catch (cleanupError) {
+    console.warn("Failed to clean temp bundle directory:", cleanupError);
+  }
 }
 
 export async function allocateNextVersion(platform: string): Promise<number> {
