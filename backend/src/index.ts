@@ -3,7 +3,7 @@ import type { Context } from "hono";
 import path from "node:path";
 import fs from "node:fs";
 import { gzipSync } from "node:zlib";
-import { supabase } from "../../push-my-way-db/supabaseClient";
+import { supabase } from "../../db/supabaseClient";
 
 const app = new Hono();
 
@@ -61,7 +61,6 @@ app.post("/bundle", async (c: Context) => {
 
   const platform = body.platform ?? c.req.query("platform") ?? DEFAULT_PLATFORM;
 
-  // Fire-and-forget background job so the request thread is not blocked
   queueBundleBuild(platform).catch((err) => {
     console.error("Background bundle build failed:", err);
   });
@@ -70,7 +69,7 @@ app.post("/bundle", async (c: Context) => {
 });
 
 async function queueBundleBuild(platform: string): Promise<void> {
-  const backendRoot = Bun.cwd();
+  const backendRoot = __dirname;
   const rnProjectRoot = path.resolve(backendRoot, "../PushMyWay");
   const buildOutputDir = path.resolve(rnProjectRoot, "codepush");
 
